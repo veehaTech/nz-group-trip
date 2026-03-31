@@ -32,8 +32,40 @@
   <style>
     html { scroll-behavior: smooth; }
 
-    .hero-bg {
-      background: #0C4A6E;
+    .hero-bg { background: #000; }
+
+    /* ── Fullscreen crossfade slideshow + Ken Burns ── */
+    /* 11 photos × 5s each = 55s cycle. Crossfade overlaps 1.5s between slides. */
+    @keyframes crossfade {
+      0%      { opacity: 0; transform: scale(1);    }
+      5.45%   { opacity: 1; transform: scale(1);    }
+      27.27%  { opacity: 1; transform: scale(1.07); }
+      32.72%  { opacity: 0; transform: scale(1.07); }
+      100%    { opacity: 0; transform: scale(1.07); }
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      animation: crossfade 55s linear infinite;
+      will-change: opacity, transform;
+    }
+    .slide:nth-child(1)  { animation-delay:  0s;  background-image: url("images/Milford Sound-09.jpg"); }
+    .slide:nth-child(2)  { animation-delay:  5s;  background-image: url("images/Lupins-66.jpg"); }
+    .slide:nth-child(3)  { animation-delay: 10s;  background-image: url("images/Abel Tasman-026.jpg"); }
+    .slide:nth-child(4)  { animation-delay: 15s;  background-image: url("images/Mount cook-3.jpg"); }
+    .slide:nth-child(5)  { animation-delay: 20s;  background-image: url("images/Abel Tasman-059.jpg"); }
+    .slide:nth-child(6)  { animation-delay: 25s;  background-image: url("images/Nelson-28.jpg"); }
+    .slide:nth-child(7)  { animation-delay: 30s;  background-image: url("images/Milford Sound-53.jpg"); }
+    .slide:nth-child(8)  { animation-delay: 35s;  background-image: url("images/Nelson-31.jpg"); }
+    .slide:nth-child(9)  { animation-delay: 40s;  background-image: url("images/Milford Sound-58.jpg"); }
+    .slide:nth-child(10) { animation-delay: 45s;  background-image: url("images/Milford Sound-82.jpg"); }
+    .slide:nth-child(11) { animation-delay: 50s;  background-image: url("images/Southern Secret-02.jpg"); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide { animation: none; opacity: 0; }
+      .slide:nth-child(1) { opacity: 1; }
     }
 
     .transport-bg {
@@ -103,21 +135,8 @@
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
 
-    @keyframes driftUp {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-50%); }
-    }
-    @keyframes driftDown {
-      from { transform: translateY(-50%); }
-      to   { transform: translateY(0); }
-    }
-    .col-drift-up      { animation: driftUp   40s linear infinite; }
-    .col-drift-down    { animation: driftDown 35s linear infinite; }
-    .col-drift-up-slow { animation: driftUp   45s linear infinite; }
-
     @media (prefers-reduced-motion: reduce) {
       .fade-up { animation: none; }
-      .col-drift-up, .col-drift-down, .col-drift-up-slow { animation: none; }
     }
   </style>
 </head>
@@ -154,54 +173,19 @@
   ═══════════════════════════════════════════════ -->
   <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden" id="hero">
 
-    <!-- ── Animated photo collage background ── -->
-    <div class="absolute inset-0 flex" style="gap: 2px;" aria-hidden="true">
-
-      <!-- Column 1: drifts UP (40s) — Milford, Abel Tasman, Nelson, Lupins -->
-      <div class="flex-1 overflow-hidden">
-        <div class="col-drift-up flex flex-col" style="gap: 2px;">
-          <img src="images/Milford%20Sound-09.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Abel%20Tasman-026.jpg"    alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Nelson-28.jpg"            alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Lupins-66.jpg"            alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <!-- clones for seamless loop -->
-          <img src="images/Milford%20Sound-09.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Abel%20Tasman-026.jpg"    alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Nelson-28.jpg"            alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Lupins-66.jpg"            alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-        </div>
-      </div>
-
-      <!-- Column 2: drifts DOWN (35s), offset start — Mt Cook, Milford 53, Abel Tasman 059, Nelson 31 -->
-      <div class="flex-1 overflow-hidden">
-        <div class="col-drift-down flex flex-col" style="gap: 2px; margin-top: -30%;">
-          <img src="images/Mount%20cook-3.jpg"       alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Milford%20Sound-53.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Abel%20Tasman-059.jpg"    alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Nelson-31.jpg"            alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <!-- clones for seamless loop -->
-          <img src="images/Mount%20cook-3.jpg"       alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Milford%20Sound-53.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Abel%20Tasman-059.jpg"    alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Nelson-31.jpg"            alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-        </div>
-      </div>
-
-      <!-- Column 3: drifts UP slowly (45s), hidden on mobile — Milford 58, Milford 82, Southern Secret -->
-      <div class="hidden md:block flex-1 overflow-hidden">
-        <div class="col-drift-up-slow flex flex-col" style="gap: 2px; margin-top: -15%;">
-          <img src="images/Milford%20Sound-58.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Milford%20Sound-82.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Southern%20Secret-02.jpg" alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <!-- clones for seamless loop -->
-          <img src="images/Milford%20Sound-58.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Milford%20Sound-82.jpg"   alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-          <img src="images/Southern%20Secret-02.jpg" alt="" class="w-full object-cover flex-shrink-0" style="height: 280px;">
-        </div>
-      </div>
-
-    </div>
-    <!-- ── /collage ── -->
+    <!-- ── Fullscreen crossfade slideshow (CSS-only, no JS) ── -->
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <div class="slide" aria-hidden="true"></div>
+    <!-- ── /slideshow ── -->
 
     <!-- Gradient overlay — ensures text remains legible -->
     <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(12,74,110,0.72) 0%, rgba(12,74,110,0.38) 40%, rgba(12,74,110,0.82) 100%);"></div>
