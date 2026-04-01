@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Noto+Serif:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -28,7 +28,7 @@
             sans: ['Plus Jakarta Sans', 'sans-serif'],
             display: ['Noto Serif', 'serif'],
             ui: ['Plus Jakarta Sans', 'sans-serif'],
-            script: ['Homemade Apple', 'cursive']
+            script: ['Satisfy', 'cursive']
           }
         }
       }
@@ -90,7 +90,7 @@
       font-weight: 700;
     }
     .accent-script {
-      font-family: 'Homemade Apple', cursive;
+      font-family: 'Satisfy', cursive;
       color: var(--sa-accent);
       letter-spacing: 0;
     }
@@ -130,15 +130,17 @@
       max-width: 9.5ch;
     }
     .hero-title-accent {
-      display: block;
-      margin-left: 0.45em;
+      display: inline;
+      font-family: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
       color: var(--sa-accent);
     }
     .hero-script {
-      font-family: 'Homemade Apple', cursive;
+      font-family: 'Satisfy', cursive;
       font-size: clamp(1.35rem, 2.2vw, 1.95rem);
       color: rgba(242, 125, 82, 0.95);
-      transform: rotate(-5deg);
+      transform: rotate(-2deg);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
       display: inline-block;
       margin-bottom: 0.65rem;
@@ -485,7 +487,7 @@
     }
     #about-hosts .text-3xl.text-primary {
       color: var(--sa-accent-deep) !important;
-      font-family: 'Homemade Apple', cursive !important;
+      font-family: 'Satisfy', cursive !important;
       font-size: 1.9rem;
       line-height: 1;
     }
@@ -494,7 +496,7 @@
     .floating-cta,
     #booking a[href="#stripe-placeholder-link"],
     #pricing a[href="#booking"] {
-      background: linear-gradient(135deg, #a0401a, #f27d52) !important;
+      background: var(--sa-accent) !important;
       color: #ffffff !important;
       box-shadow: 0 18px 40px rgba(160, 64, 26, 0.2);
     }
@@ -588,8 +590,8 @@
       </div>
       <div class="hidden md:flex items-center gap-6">
         <a href="#about-trip" class="nav-link nav-brand text-primary/80 hover:text-primary text-sm font-medium transition-colors duration-200 cursor-pointer">The Trip</a>
-        <a href="#about-hosts" class="nav-link nav-brand text-primary/80 hover:text-primary text-sm font-medium transition-colors duration-200 cursor-pointer">Your Hosts</a>
         <a href="#itinerary" class="nav-link nav-brand text-primary/80 hover:text-primary text-sm font-medium transition-colors duration-200 cursor-pointer">Itinerary</a>
+        <a href="#about-hosts" class="nav-link nav-brand text-primary/80 hover:text-primary text-sm font-medium transition-colors duration-200 cursor-pointer">Your Hosts</a>
         <a href="#faqs" class="nav-link nav-brand text-primary/80 hover:text-primary text-sm font-medium transition-colors duration-200 cursor-pointer">FAQs</a>
         <a href="#booking" class="bg-accent hover:bg-accent-dark text-white font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 text-sm shadow-lg cursor-pointer">
           Book Now
@@ -611,10 +613,9 @@
       <div class="hero-copy">
         <img src="images/Logo.png" alt="Sagar and Ami New Zealand trip logo" class="hero-logo fade-up mb-5 drop-shadow-2xl" />
         <p class="fade-up hero-kicker text-[0.68rem] text-white font-semibold mb-5" style="text-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);">A group trip by Sagar &amp; Ami</p>
-        <span class="fade-up delay-1 hero-script">travel slow</span>
         <h1 class="fade-up delay-1 hero-title text-white mb-5">
           Unforgettable
-          <span class="hero-title-accent">NZ Experiences</span>
+          <span class="hero-title-accent">New Zealand Experiences</span>
         </h1>
         <p class="fade-up delay-2 text-white text-base md:text-lg leading-[1.55] mb-8 max-w-[34rem] md:max-w-[50ch]" style="text-shadow: 0 10px 24px rgba(0, 0, 0, 0.28); text-wrap: pretty;">
           Explore both islands with a fun, easygoing group trip full of iconic landscapes, unforgettable experiences, and the kind of moments you'll still be talking about long after you get home.
@@ -1223,13 +1224,6 @@
               <p class="text-accent font-bold mt-1.5">$549 <span class="text-xs text-brand/40 font-normal">/person</span></p>
             </div>
           </div>
-          <div class="bg-white rounded-xl p-4 border border-sky-100 flex gap-3">
-            <img src="https://www.bookmestatic.net.nz/images/activities/1901_image1_Hydro_Attack_Jump.jpg" alt="Hydro Attack" class="w-16 h-16 rounded-lg object-cover flex-shrink-0" loading="lazy"/>
-            <div>
-              <p class="font-semibold text-brand text-sm leading-snug">Hydro Attack</p>
-              <p class="text-accent font-bold mt-1.5">$229 <span class="text-xs text-brand/40 font-normal">/person</span></p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1289,7 +1283,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <p class="text-3xl text-primary mb-5 leading-snug" style="font-family: 'Homemade Apple', cursive; font-weight: 400;">
+          <p class="text-3xl text-primary mb-5 leading-snug" style="font-family: 'Satisfy', cursive; font-weight: 400;">
             Your hosts,<br/>Sagar &amp; Ami.
           </p>
 
