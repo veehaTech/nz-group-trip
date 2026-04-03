@@ -129,8 +129,6 @@ export default async function handler(req, res) {
       metadata: {
         type: 'balance',
         scheduled_for: '2026-08-28',
-        customer_name: customerName,
-        customer_email: customerEmail,
         deposit_session: session.id,
       },
     },
@@ -139,6 +137,6 @@ export default async function handler(req, res) {
     }
   );
 
-  console.log(`Balance invoice created for ${customerName} (${customerEmail})`);
+  console.log(`Balance invoice created for session ${session.id}`);
   return res.status(200).json({ received: true });
 }

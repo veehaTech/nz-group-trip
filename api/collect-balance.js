@@ -28,10 +28,8 @@ export default async function handler(req, res) {
       await stripe.invoices.finalizeInvoice(invoice.id, { auto_advance: true });
       results.finalized.push({
         id: invoice.id,
-        customer: invoice.metadata.customer_name,
-        email: invoice.metadata.customer_email,
       });
-      console.log(`Finalized balance invoice ${invoice.id} for ${invoice.metadata.customer_name}`);
+      console.log(`Finalized balance invoice ${invoice.id}`);
     } catch (err) {
       results.failed.push({ id: invoice.id, error: err.message });
       console.error(`Failed to finalize invoice ${invoice.id}:`, err.message);
