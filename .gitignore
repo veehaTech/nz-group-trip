@@ -1,5 +1,7 @@
 .vercel
 .DS_Store
+.env.local
+.env*.local
 group-trip-sagar-ami.html
 
 # Unused local image assets kept out of version control

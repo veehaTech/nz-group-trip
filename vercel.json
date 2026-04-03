@@ -1,3 +1,9 @@
 {
-  "outputDirectory": "sagar-ami-2026"
+  "outputDirectory": "sagar-ami-2026",
+  "crons": [
+    {
+      "path": "/api/collect-balance",
+      "schedule": "0 21 27 8 *"
+    }
+  ]
 }
