@@ -108,11 +108,11 @@ export default async function handler(req, res) {
     invoice_settings: { default_payment_method: paymentMethodId },
   });
 
-  // Create a draft invoice for the 60% balance ($4,800 NZD)
+  // Create a draft invoice for the 60% balance ($4,020 NZD)
   await stripe.invoiceItems.create(
     {
       customer: customerId,
-      amount: 480000, // $4,800.00 NZD in cents
+      amount: 402000, // $4,020.00 NZD in cents
       currency: 'nzd',
       description: 'NZ Group Trip 2026 - Balance Payment (60%)',
     },
